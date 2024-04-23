@@ -85,6 +85,9 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
                     <skipTests>true</skipTests>
+                    <environmentVariables>
+                        <jar-path>../prospero-cli/target/prospero-cli-${project.version}-shaded.jar</jar-path>
+                    </environmentVariables>
                 </configuration>
             </plugin>
             <plugin>

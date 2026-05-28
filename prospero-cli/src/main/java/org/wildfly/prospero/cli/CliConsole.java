@@ -189,10 +189,13 @@ public class CliConsole implements Console {
                         downgradeMarker(artifactUpdate.isDowngrade()), artifactName, oldVersion.orElse("[]"),
                         newVersion.orElse("[]"), channelName);
             }
+        }
 
-            if (artifactUpdates.stream().anyMatch(ArtifactChange::isDowngrade)) {
-                printf(CliMessages.MESSAGES.possibleDowngrade());
-            }
+        if (artifactUpdates.stream().anyMatch(ArtifactChange::isDowngrade)) {
+            printf(CliMessages.MESSAGES.possibleDowngrade());
+        }
+        if (manifestUpdates.stream().anyMatch(ChannelVersionChange::isDowngrade)) {
+            printf(CliMessages.MESSAGES.possibleManifestDowngrade());
         }
     }
 
